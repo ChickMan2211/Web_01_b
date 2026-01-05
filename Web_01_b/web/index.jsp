@@ -1,8 +1,4 @@
-<%-- 
-    Document   : index
-    Created on : Jan 5, 2026, 11:27:26 AM
-    Author     : BAO
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
