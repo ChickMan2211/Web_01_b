@@ -5,7 +5,7 @@
 <body>
     <h1>HTML Forms</h1>
     <form action="index.html">
-        Textbox <input type="text" name="txtText" value="" size="5" /><br/>
+        Textbox <input type="text" name="txtText" value="" size="20" /><br/>
         Password <input type="password" name="txtPassword" value="" /><br/>
         Hidden <input type="hidden" name="txtHidden" value="" /><br/>
         Male <input type="checkbox" name="chkCheck" value="ON" checked="checked" /><br/>
