@@ -1,0 +1,27 @@
+<%-- 
+    Document   : login
+    Created on : Jan 8, 2026, 11:24:43 AM
+    Author     : BAO
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+    </head>
+    <body>
+        <form action="MainController" method = "post">
+            <input type="hidden" name="action" value="login"/>
+            Username: <input type ="text" name= "txtUsername"/> <br/>
+            Password: <input type="password" name="txtPassword"/> <br/>
+            <input type="submit" value="login"/>
+        </form>
+        <%
+            String mess = request.getAttribute("mess")+"";
+            mess = (mess.equals("null"))? "":mess;
+        %>
+        <span style="color:red" ><%=mess%></span>
+    </body>
+</html>
