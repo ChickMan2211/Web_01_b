@@ -12,7 +12,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import sun.security.util.Password;
 import utils.DbUtils;
 
 /**
@@ -21,25 +20,28 @@ import utils.DbUtils;
  */
 public class UserDAO {
 
-   
+    Connection conn;
 
     public UserDAO() {
 
-    }
-
-    public UserDTO searchById(String username) {
-        Connection conn;
         try {
             conn = DbUtils.getConnection();
-            String sql = "SELECT * FROM tblUsers "
-                    + " WHERE userID=?";
-            System.out.println(sql);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private UserDTO SearchById(String username) {
+        try {
+            String sql = "SELECT * FROM tblUsers" + " WHERE userID =?";
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setString(1, username);
             ResultSet rs = pst.executeQuery();
-            
             UserDTO user = null;
-            while (rs.next()) {                
+
+            while (rs.next()) {
                 String userID = rs.getString("userID");
                 String fullname = rs.getString("fullname");
                 String password = rs.getString("password");
@@ -48,16 +50,20 @@ public class UserDAO {
                 user = new UserDTO(userID, fullname, password, roleID, status);
             }
             return user;
-        } catch (Exception e) {
+        } catch (Exception ex) {
             return null;
-        } 
+        }
     }
 
-    public UserDTO login(String username, String password) {
-        UserDTO a = searchById(username);
-        if (a != null && a.getPassword().equals(password)) {
-            return a;
+    public UserDTO login(String username, String Password) {
+        UserDTO user = SearchById(username);
+        
+        if (user != null && user.getPassword().equalsIgnoreCase(Password)) {
+            return user;
         }
         return null;
+
     }
-}
+
+
+    }

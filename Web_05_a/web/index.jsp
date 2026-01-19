@@ -1,6 +1,6 @@
 <%-- 
-    Document   : Loginfail
-    Created on : Jan 8, 2026, 11:33:47 AM
+    Document   : index
+    Created on : Jan 19, 2026, 9:38:41 AM
     Author     : BAO
 --%>
 
@@ -12,6 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Dang nhap that bai!</h1>
+        <a href="login.jsp">login</a>
     </body>
 </html>
